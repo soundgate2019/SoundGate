@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.GregorianCalendar;
 
-
+@SpringBootTest
+@RunWith(SpringRunner.class)
 public class SoundGateApplicationTests {
     @Autowired
     private UsuarioRepository repository;
