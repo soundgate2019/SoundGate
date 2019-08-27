@@ -5,21 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name="SG_AM_EVENTO")
@@ -56,9 +42,12 @@ public class Evento {
     @Temporal(TemporalType.TIME)
     @Column(name="hr_li_evento",nullable=false)
     private Date horarioLimite;
+    @Lob
+    @Column(name="ft_evento",nullable = true)
+    private byte[] fotoEvento;
 
     public Evento(int cd, String nome, Calendar primeiroDia, Calendar ultimoDia, Empresa empresa, Endereco endereco,
-                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite) {
+                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite, byte[] fotoEvento) {
         super();
         this.cd = cd;
         this.nome = nome;
@@ -71,6 +60,7 @@ public class Evento {
         this.ingressos = ingressos;
         this.horarioInicial = horarioInicial;
         this.horarioLimite = horarioLimite;
+        this.fotoEvento = fotoEvento;
     }
     public Evento(int cd, String nome, Calendar primeiroDia, Calendar ultimoDia, Empresa empresa, Endereco endereco,
                   double preco, int lugaresPorDia, List<Ingresso> ingressos) {
@@ -169,4 +159,11 @@ public class Evento {
         this.horarioLimite = horarioLimite;
     }
 
+    public byte[] getFotoEvento() {
+        return fotoEvento;
+    }
+
+    public void setFotoEvento(byte[] fotoEvento) {
+        this.fotoEvento = fotoEvento;
+    }
 }
