@@ -1,5 +1,7 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

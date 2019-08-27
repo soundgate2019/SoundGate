@@ -1,19 +1,11 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Calendar;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name="SG_AM_INGRESSO")
@@ -25,7 +17,8 @@ public class Ingresso {
     @Column(name="cd_ingresso")
     private int cd;
     @Id
-    @ManyToOne
+    @JsonIgnoreProperties("ingressos")
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cd_evento")
     private Evento evento;
     @Temporal(TemporalType.DATE)
@@ -33,7 +26,8 @@ public class Ingresso {
     private Calendar data;
     @Column(name="estaddo_ing",nullable=false)
     private boolean valido;
-    @ManyToOne
+    @JsonIgnoreProperties({"ingressos","historicos"})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
 

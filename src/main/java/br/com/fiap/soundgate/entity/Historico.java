@@ -1,5 +1,7 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
@@ -28,6 +30,7 @@ public class Historico {
     @Column(name="cd_historico")
     private int cd;
     @Id
+    @JsonIgnoreProperties("historico")
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;

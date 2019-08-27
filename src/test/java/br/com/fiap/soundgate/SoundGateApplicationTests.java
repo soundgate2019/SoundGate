@@ -21,8 +21,21 @@ public class SoundGateApplicationTests {
     @Test
     public void contextLoads() {
 
-        Usuario usuario = repository.findByLoginAndSenha("zaiamlata3","1234");
-        System.out.println(usuario.getCd());
+        Usuario usuario = new Usuario();
+        usuario.setCpf(42742039805l);
+        usuario.setLogin("zaiamlata");
+        usuario.setSenha("1234");
+        usuario.setRg("507834549");
+        usuario.setNome("Victor Ribeiro");
+        usuario.setTelefone(38646969);
+        usuario.setSaldo(50);
+        usuario.setNascimento(new GregorianCalendar());
+        Endereco endereco = new Endereco();
+        endereco.setCep("05060054");
+        endereco.setDescricao("Endereco Usuario");
+        endereco.setLogradouro("Rua Usuario");
+        usuario.setEndereco(endereco);
+        repository.save(usuario);
     }
 }
 

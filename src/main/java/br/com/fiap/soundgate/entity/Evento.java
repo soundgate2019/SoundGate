@@ -1,5 +1,8 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,10 +27,11 @@ public class Evento {
     @Temporal(TemporalType.DATE)
     @Column(name="dt_ult_dia",nullable=false)
     private Calendar ultimoDia;
-    @ManyToOne
+    @JsonIgnoreProperties("eventos")
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cd_empresa")
     private Empresa empresa;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cd_endereco",nullable=false)
     private Endereco endereco;
     @Column(name="vl_evento",precision=4,scale=2,nullable=false)
