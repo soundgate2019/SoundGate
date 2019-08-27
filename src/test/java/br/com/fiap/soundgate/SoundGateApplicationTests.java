@@ -21,8 +21,8 @@ public class SoundGateApplicationTests {
     @Test
     public void contextLoads() {
 
-        Optional<Usuario> usuario = repository.findByLoginAndSenha("zaiamlata3","1234");
-        System.out.println(usuario.get().getCd());
+        Usuario usuario = repository.findByLoginAndSenha("zaiamlata3","1234");
+        System.out.println(usuario.getCd());
     }
 }
 

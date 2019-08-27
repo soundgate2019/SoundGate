@@ -16,8 +16,8 @@ public class SoundGateWB {
     @Autowired
     private UsuarioRepository repository;
     @GetMapping
-    public String oi(){
-        return "Oi";
+    public Usuario oi(){
+        return repository.findById(1).get();
     }
     @GetMapping("{cd}")
     public boolean usuarioExiste(@PathVariable int cd){
