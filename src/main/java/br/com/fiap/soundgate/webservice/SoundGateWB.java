@@ -1,9 +1,7 @@
 package br.com.fiap.soundgate.webservice;
 
-import br.com.fiap.soundgate.DAO.IngressoRepository;
-import br.com.fiap.soundgate.DAO.UsuarioRepository;
-import br.com.fiap.soundgate.entity.Ingresso;
-import br.com.fiap.soundgate.entity.Usuario;
+import br.com.fiap.soundgate.DAO.*;
+import br.com.fiap.soundgate.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +18,12 @@ public class SoundGateWB {
     private UsuarioRepository repository;
     @Autowired
     private IngressoRepository repositoryI;
+    @Autowired
+    private EnderecoRepository repositoryE;
+    @Autowired
+    private EmpresaRepository empresaRepository;
+    @Autowired
+    private EventoRepository eventoRepository;
     @GetMapping("Usuario")
     public Usuario oi(){
         return repository.findById(2).get();
@@ -32,5 +36,17 @@ public class SoundGateWB {
     @GetMapping("Ingresso")
     public Ingresso seila(){
         return repository.findById(2).get().getIngressos().get(0);
+    }
+    @GetMapping("Enderecos")
+    public List<Endereco> enderecos(){
+        return  repositoryE.findAll();
+    }
+    @GetMapping("Empresas")
+    public List<Empresa> empresas(){
+        return  empresaRepository.findAll();
+    }
+    @GetMapping("Eventos")
+    public List<Evento> eventos(){
+        return eventoRepository.findAll();
     }
 }
