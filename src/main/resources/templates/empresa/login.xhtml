@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Login</title>
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="css.css" />
+</h:head>
+<ui:composition template="_templateDeslogado.xhtml">
+	<ui:define name="corpo">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+					<div class="card card-signin my-5">
+						<div class="card-body">
+							<h5 class="card-title text-center">Login</h5>
+							<form class="form-signin">
+								<div class="form-label-group">
+									<h:outputLabel for="inputEmail">Email</h:outputLabel>
+									<h:inputText type="email" id="inputEmail" maxlength="100" class="form-control"
+										placeholder="Email" />
+								</div>
+
+								<div class="form-label-group">
+									<h:outputLabel for="inputPassword">Senha</h:outputLabel>
+									<h:inputSecret type="password" id="inputPassword" maxlength="200"
+										class="form-control" placeholder="Senha" />
+								</div>
+								<div class="custom-control custom-checkbox mb-3" id="perma">
+									<h:selectOneRadio type="checkbox" class="custom-control-input"
+										id="customCheck1">
+									</h:selectOneRadio>
+									<h:outputLabel class="custom-control-label" for="customCheck1">Lembrar senha</h:outputLabel>
+									<span class="margin"><a href="perfil.xhtml"> Esqueci
+											a senha </a></span>
+								</div>
+								<button class="btn btn-lg btn-primary btn-block botoes text-uppercase"
+									type="submit">Entrar</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
