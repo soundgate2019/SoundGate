@@ -25,7 +25,7 @@ public class Empresa {
     @GeneratedValue(generator="empresa",strategy=GenerationType.SEQUENCE)
     private int cd;
     @Column(name="nr_cnpj",precision=14,nullable=false)
-    private int cnpj;
+    private long cnpj;
     @Column(name="nm_empresa",length=60,nullable=false)
     private String nome;
     @OneToOne(cascade=CascadeType.ALL)
@@ -34,7 +34,7 @@ public class Empresa {
     @OneToMany(mappedBy="empresa",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Evento> eventos= new ArrayList<Evento>();
 
-    public Empresa(int cd, int cnpj, String nome, Endereco endereco, List<Evento> eventos) {
+    public Empresa(int cd, long cnpj, String nome, Endereco endereco, List<Evento> eventos) {
         super();
         this.cd = cd;
         this.cnpj = cnpj;
@@ -45,7 +45,7 @@ public class Empresa {
     public Empresa() {
         super();
     }
-    public Empresa(int cd, int cnpj, String nome, Endereco endereco) {
+    public Empresa(int cd, long cnpj, String nome, Endereco endereco) {
         super();
         this.cd = cd;
         this.cnpj = cnpj;
@@ -68,10 +68,10 @@ public class Empresa {
     public void setCd(int cd) {
         this.cd = cd;
     }
-    public int getCnpj() {
+    public long getCnpj() {
         return cnpj;
     }
-    public void setCnpj(int cnpj) {
+    public void setCnpj(long cnpj) {
         this.cnpj = cnpj;
     }
     public String getNome() {
