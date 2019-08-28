@@ -18,7 +18,7 @@ public class Ingresso {
     private int cd;
     @Id
     @JsonIgnoreProperties("ingressos")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="cd_evento")
     private Evento evento;
     @Temporal(TemporalType.DATE)
@@ -27,7 +27,7 @@ public class Ingresso {
     @Column(name="estaddo_ing",nullable=false)
     private boolean valido;
     @JsonIgnoreProperties({"ingressos","historicos"})
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
 

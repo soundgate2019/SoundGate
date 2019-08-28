@@ -23,7 +23,7 @@ public class SoundGateApplicationTests {
 
         Usuario usuario = new Usuario();
         usuario.setCpf(42742039805l);
-        usuario.setLogin("zaiamlata");
+        usuario.setLogin("zaiamlata2");
         usuario.setSenha("1234");
         usuario.setRg("507834549");
         usuario.setNome("Victor Ribeiro");
@@ -36,6 +36,16 @@ public class SoundGateApplicationTests {
         endereco.setLogradouro("Rua Usuario");
         usuario.setEndereco(endereco);
         repository.save(usuario);
+    }
+    @Test
+    public void pesquisaNome(){
+        Usuario usuario = repository.findByLogin("zaiamlata4");
+        System.out.println(usuario);
+    }
+    @Test
+    public void pesquisaNomeSenha(){
+        Usuario usuario = repository.findByLoginAndSenha("zaiamlata4","1234");
+        System.out.println(usuario);
     }
 }
 
