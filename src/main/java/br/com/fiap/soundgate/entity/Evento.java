@@ -15,7 +15,6 @@ import javax.persistence.*;
 @SequenceGenerator(name="evento",sequenceName="SG_SQ_EVENTO",allocationSize=1)
 public class Evento {
     @Id
-
     @GeneratedValue(generator="evento",strategy=GenerationType.SEQUENCE)
     @Column(name="cd_evento")
     private int cd;
