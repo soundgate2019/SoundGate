@@ -2,6 +2,7 @@ package br.com.fiap.soundgate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,9 +21,11 @@ public class Evento {
     private int cd;
     @Column(name="nm_evento",length=70,nullable=false)
     private String nome;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_pri_dia",nullable=false)
     private Calendar primeiroDia;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_ult_dia",nullable=false)
     private Calendar ultimoDia;

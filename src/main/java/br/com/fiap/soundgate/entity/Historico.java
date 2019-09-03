@@ -1,6 +1,7 @@
 package br.com.fiap.soundgate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Calendar;
 
@@ -34,6 +35,7 @@ public class Historico {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_transacao",nullable=false)
     private Calendar data;

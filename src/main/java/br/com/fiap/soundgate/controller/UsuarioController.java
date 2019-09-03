@@ -1,6 +1,7 @@
 package br.com.fiap.soundgate.controller;
 
 import br.com.fiap.soundgate.DAO.UsuarioRepository;
+import br.com.fiap.soundgate.entity.Endereco;
 import br.com.fiap.soundgate.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,16 @@ public class UsuarioController {
 
     @GetMapping("/usuario/cadastro")
     public String cadastrarUsuario(){
-        return "cadastro";
+        return "usuario/cadastro";
     }
 
     @PostMapping("/usuario/cadastro")
-    public String cadastrarUsuario(Usuario usuario){
-        usuario.setNascimento(Calendar.getInstance());
+    public String cadastrarUsuario(Usuario usuario,String logradouro,String cep,String descricao){
+        Endereco endereco = new Endereco();
+        endereco.setCep(cep);
+        endereco.setDescricao(descricao);
+        endereco.setLogradouro(logradouro);
+        usuario.setEndereco(endereco);
         usuarioRepository.save(usuario);
         return "perfil";
     }

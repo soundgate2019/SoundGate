@@ -2,6 +2,7 @@ package br.com.fiap.soundgate.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Calendar;
 
@@ -21,6 +22,7 @@ public class Ingresso {
     @ManyToOne
     @JoinColumn(name="cd_evento")
     private Evento evento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_evento")
     private Calendar data;
