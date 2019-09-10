@@ -31,7 +31,7 @@ public class Historico {
     @Column(name="cd_historico")
     private int cd;
     @Id
-    @JsonIgnoreProperties("historico")
+    @JsonIgnoreProperties("historicos")
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
