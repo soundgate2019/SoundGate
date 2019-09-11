@@ -1,5 +1,6 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -52,8 +53,10 @@ public class Usuario {
     @OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name="cd_endereco",nullable=false)
     private Endereco endereco;
+    @JsonIgnore
     @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Historico> historicos =new ArrayList<Historico>();
+    @JsonIgnore
     @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Ingresso> ingressos = new ArrayList<Ingresso>();
 

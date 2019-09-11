@@ -2,6 +2,7 @@ package br.com.fiap.soundgate.webservice;
 
 import br.com.fiap.soundgate.DAO.*;
 import br.com.fiap.soundgate.entity.*;
+import br.com.fiap.soundgate.excecao.CadastroException;
 import br.com.fiap.soundgate.webservice.facts.UsuarioFacts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,12 +40,22 @@ public class SoundGateWBUsuario {
         repository.save(usuario);
         historicoRepository.save(historico);
     }
+    @PutMapping("atualizar")
+    public void atualizar(@RequestBody Usuario usuario){
+        repository.save(usuario);
+    }
     @PostMapping("ingressos")
     public List<Ingresso> ingressos(@RequestBody Usuario usuario){
         return repository.findById(usuario.getCd()).get().getIngressos();
     }
-    @PostMapping("Historicos")
+    @PostMapping("historicos")
     public List<Historico> historicos(@RequestBody Usuario usuario){
         return repository.findById(usuario.getCd()).get().getHistoricos();
+    }
+    @PostMapping("cadastrar")
+    public  void cadastrarUsuario(@RequestBody Usuario usuario)throws CadastroException{
+        if(repository.findByLogin(usuario.getLogin()) != null)
+            throw  new CadastroException();
+        repository.save(usuario);
     }
 }

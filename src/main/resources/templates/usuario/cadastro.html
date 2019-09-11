@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
 
 <head>
 	<title>Cadastro</title>
-	<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="../../css/css.css" rel="stylesheet"/>
+	<link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 <!--<ui:composition template="_templateDeslogado.xhtml"> -->
 <body>
@@ -67,7 +68,7 @@
 								<input class="form-control" type="text"name="logradouro">
 
 						</div>
-						<div class="form-label-group">
+						<div class="form-label-group divEnd">
 							<label>Descri&ccedil;&atilde;o</label>
 								<input class="form-control" type="text" name="descricao">
 
@@ -83,6 +84,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="../bootstrap.min.js" ></script>
 <!--</ui:composition>-->
 </html>
