@@ -3,6 +3,9 @@ package br.com.fiap.soundgate.webservice;
 import br.com.fiap.soundgate.DAO.*;
 import br.com.fiap.soundgate.entity.*;
 import br.com.fiap.soundgate.excecao.CadastroException;
+import br.com.fiap.soundgate.excecao.EsgotadoException;
+import br.com.fiap.soundgate.excecao.SaldoInsuficienteException;
+import br.com.fiap.soundgate.webservice.facts.IngressoFacts;
 import br.com.fiap.soundgate.webservice.facts.UsuarioFacts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +22,8 @@ public class SoundGateWBUsuario {
     private UsuarioRepository repository;
     @Autowired
     private HistoricoRepository historicoRepository;
+    @Autowired
+    private IngressoRepository ingressoRepository;
     @PostMapping("logar")
     public Usuario logar(@RequestBody UsuarioFacts usuarioFacts){
         return repository.findByLoginAndSenha(usuarioFacts.getLogin(), usuarioFacts.getSenha());
@@ -57,5 +62,41 @@ public class SoundGateWBUsuario {
         if(repository.findByLogin(usuario.getLogin()) != null)
             throw  new CadastroException();
         repository.save(usuario);
+    }
+    @PostMapping("adicionarIngresso")
+    @Transactional
+    public void addicionarIngresso(@RequestBody IngressoFacts facts) throws SaldoInsuficienteException, EsgotadoException {
+        Usuario usuario=facts.getUsuario();
+        Evento evento = facts.getEvento();
+        //Criando Ingresso
+        Ingresso ingresso = new Ingresso();
+        ingresso.setValido(true);
+        ingresso.setData(facts.getData());
+        ingresso.setUsuario(usuario);
+        ingresso.setEvento(evento);
+
+        //Conferindo se existem ingressos disponiveis para esse evento
+        if(!ingressoRepository.findAllByEvento(evento).isEmpty())
+            if(evento.getLugaresPorDia()-ingressoRepository.contarIngressos(evento.getCd(),ingresso.getData())<1)
+                throw new EsgotadoException();
+
+        //Coferindo e atualizando informações do usuario
+        if(usuario.getSaldo()-evento.getPreco() < 0)
+            throw new SaldoInsuficienteException();
+
+        //atualizando usuario
+        usuario.setSaldo(usuario.getSaldo() - evento.getPreco());
+        //Criando historico
+        Historico historico = new Historico();
+        historico.setUsuario(usuario);
+        historico.setValor(-evento.getPreco());
+        historico.setData(new GregorianCalendar());
+        historico.setDescricao("Compra de ingresso para o evento "+evento.getNome());
+
+        //colacando os dados no banco
+        repository.save(usuario);
+        historicoRepository.save(historico);
+        ingressoRepository.save(ingresso);
+
     }
 }
