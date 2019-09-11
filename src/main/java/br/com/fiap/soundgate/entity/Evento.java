@@ -30,7 +30,7 @@ public class Evento {
     @Column(name="dt_ult_dia",nullable=false)
     private Calendar ultimoDia;
     @JsonIgnoreProperties("eventos")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="cd_empresa")
     private Empresa empresa;
     @OneToOne(cascade = CascadeType.ALL)
