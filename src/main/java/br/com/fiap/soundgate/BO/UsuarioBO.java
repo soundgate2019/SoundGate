@@ -7,8 +7,9 @@ import br.com.fiap.soundgate.entity.Ingresso;
 import br.com.fiap.soundgate.entity.Usuario;
 import br.com.fiap.soundgate.excecao.CadastroException;
 import br.com.fiap.soundgate.excecao.SaldoInsuficienteException;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Optional;
