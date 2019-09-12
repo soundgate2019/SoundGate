@@ -24,6 +24,8 @@ public class SoundGateWBUsuario {
     private HistoricoRepository historicoRepository;
     @Autowired
     private IngressoRepository ingressoRepository;
+    @Autowired
+    private EventoRepository eventoRepository;
     @PostMapping("logar")
     public Usuario logar(@RequestBody UsuarioFacts usuarioFacts){
         return repository.findByLoginAndSenha(usuarioFacts.getLogin(), usuarioFacts.getSenha());
@@ -66,8 +68,8 @@ public class SoundGateWBUsuario {
     @PostMapping("adicionarIngresso")
     @Transactional
     public void addicionarIngresso(@RequestBody IngressoFacts facts) throws SaldoInsuficienteException, EsgotadoException {
-        Usuario usuario=facts.getUsuario();
-        Evento evento = facts.getEvento();
+        Usuario usuario=repository.findById(facts.getUsuarioCd()).get();
+        Evento evento = eventoRepository.findById(facts.getEventoCd()).get();
         //Criando Ingresso
         Ingresso ingresso = new Ingresso();
         ingresso.setValido(true);

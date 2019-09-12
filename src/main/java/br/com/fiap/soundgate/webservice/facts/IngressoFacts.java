@@ -6,33 +6,33 @@ import br.com.fiap.soundgate.entity.Usuario;
 import java.util.Calendar;
 
 public class IngressoFacts {
-    private Usuario usuario;
-    private Evento evento;
+    private int usuarioCd;
+    private int eventoCd;
     private Calendar data;
 
     public IngressoFacts() {
     }
 
-    public IngressoFacts(Usuario usuario, Evento evento, Calendar data) {
-        this.usuario = usuario;
-        this.evento = evento;
+    public IngressoFacts(int usuario, int evento, Calendar data) {
+        this.usuarioCd = usuario;
+        this.eventoCd = evento;
         this.data = data;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getUsuarioCd() {
+        return usuarioCd;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioCd(int usuario) {
+        this.usuarioCd = usuario;
     }
 
-    public Evento getEvento() {
-        return evento;
+    public int getEventoCd() {
+        return eventoCd;
     }
 
-    public void setEvento(Evento evento) {
-        this.evento = evento;
+    public void setEventoCd(int evento) {
+        this.eventoCd = evento;
     }
 
     public Calendar getData() {

@@ -1,5 +1,6 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -45,9 +46,11 @@ public class Evento {
     @OneToMany(mappedBy="evento",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Ingresso> ingressos = new ArrayList<Ingresso>();
     @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm:sss")
     @Column(name="hr_ini_evento",nullable=false)
     private Date horarioInicial;
     @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm:sss")
     @Column(name="hr_li_evento",nullable=false)
     private Date horarioLimite;
     @Lob
