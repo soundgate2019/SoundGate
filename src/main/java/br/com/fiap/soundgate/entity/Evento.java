@@ -1,5 +1,6 @@
 package br.com.fiap.soundgate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,6 +41,7 @@ public class Evento {
     private double preco;
     @Column(name="num_lugares",precision=5,nullable=false)
     private int lugaresPorDia;
+    @JsonIgnore
     @OneToMany(mappedBy="evento",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Ingresso> ingressos = new ArrayList<Ingresso>();
     @Temporal(TemporalType.TIME)
