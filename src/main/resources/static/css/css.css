@@ -9,6 +9,10 @@ body {
 	float: right;
 }
 
+.alerta{
+	margin-top: 20px;
+}
+
 .margin a {
 	color: #341f4a;
 }
