@@ -42,7 +42,7 @@ public class Usuario {
     private long cpf;
     @Column(name="nr_rg",length=9,nullable=false)
     private String rg;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_nascimento",nullable=false)
     private Calendar nascimento;
