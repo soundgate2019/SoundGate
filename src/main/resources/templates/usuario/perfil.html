@@ -1,50 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<title>Perfil</title>
-	<link href="../static/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="../static/css/css.css" rel="stylesheet"/>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
-<!--<ui:composition template="_template.xhtml"> -->
 <body>
-<div class="container" id="container">
+<div th:object="${usuario}" class="container" id="container">
 	<div class="imagem">
-		<img src="../image/perfil.jpg" width="200px"
+		<img src="../../image/perfil.jpg" th:src="@{/image/perfil.jpg}" width="200px"
 			 height="200px" alt="foto de perfil" id="fotoPerfil"/>
 		<a href="#"> Alterar foto de perfil </a>
 	</div>
 	<div class="campo">
 		<p class="h2">Nome</p>
 		<div class="form-control">
-			<p class="h4">Rafael Tsuji Matsuyama</p>
+			<p th:text="*{nome}" class="h4"></p>
 		</div>
 	</div>
 	<div class="campo">
 		<p class="h2">RG</p>
 		<div class="form-control">
-			<p class="h4">39.502.718-3</p>
+			<p th:text="*{rg}" class="h4"></p>
 		</div>
 	</div>
 	<div class="campo email">
 		<p class="h2">Email</p>
 		<div class="form-control">
-			<p class="h4">me@rafaelmatsuyama.com</p>
+			<p th:text="*{login}" class="h4"></p>
 		</div>
 	</div>
 	<div class="campo grande">
 		<p class="h2">CPF</p>
 		<div class="form-control">
-			<p class="h4">483.925.754-87</p>
+			<p th:text="*{cpf}" class="h4"></p>
 		</div>
 	</div>
 	<div class="campo grande">
 		<p class="h2">Nascimento</p>
 		<div class="form-control">
-			<p class="h4">26/12/1987</p>
+			<p th:text="*{nascimento}" class="h4"></p>
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="../bootstrap.min.js" ></script>
 </body>
-<!--</ui:composition>-->
 </html>

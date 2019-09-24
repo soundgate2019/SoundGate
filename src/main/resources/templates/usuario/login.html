@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
 	<title>Login</title>
-	<link href="../static/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="../static/css/css.css" rel="stylesheet"/>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
-<!--<ui:composition template="_templateDeslogado.xhtml">-->
 <body>
 <div class="container">
 	<div class="row">
@@ -15,17 +15,17 @@
 			<div class="card card-signin my-5">
 				<div class="card-body">
 					<h5 class="card-title text-center">Login</h5>
-					<form class="form-signin">
+					<form class="form-signin" action="/usuario/login" method="post">
 						<div class="form-label-group">
 							<label>Email</label>
 							<input type="email" id="inputEmail" maxlength="100" class="form-control"
-								   placeholder="Email" />
+								   placeholder="Email" name="login"/>
 						</div>
 
 						<div class="form-label-group">
 							<label>Senha</label>
 							<input type="password" id="inputPassword" maxlength="200"
-								   class="form-control" placeholder="Senha" />
+								   class="form-control" placeholder="Senha" name="senha" />
 						</div>
 						<div class="custom-control custom-checkbox mb-3" id="perma">
 							<input type="checkbox" class="custom-control-input"
@@ -38,6 +38,7 @@
 								type="submit">Entrar</button>
 
 					</form>
+					<div class="alert-warning alert alerta" th:if="${msg!=null}" th:text="${msg}"></div>
 				</div>
 			</div>
 		</div>
@@ -45,5 +46,4 @@
 </div>
 </body>
 <script type="text/javascript" src="../bootstrap.min.js" ></script>
-<!--</ui:composition>-->
 </html>
