@@ -22,7 +22,7 @@ public class Ingresso {
     @ManyToOne
     @JoinColumn(name="cd_evento")
     private Evento evento;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_evento")
     private Calendar data;

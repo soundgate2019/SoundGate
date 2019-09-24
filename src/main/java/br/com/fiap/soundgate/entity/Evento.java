@@ -23,11 +23,11 @@ public class Evento {
     private int cd;
     @Column(name="nm_evento",length=70,nullable=false)
     private String nome;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_pri_dia",nullable=false)
     private Calendar primeiroDia;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_ult_dia",nullable=false)
     private Calendar ultimoDia;
