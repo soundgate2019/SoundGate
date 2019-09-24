@@ -40,7 +40,7 @@
 	<div class="campo grande">
 		<p class="h2">Nascimento</p>
 		<div class="form-control">
-			<p th:text="*{nascimento}" class="h4"></p>
+			<p th:text="*{#dates.format(nascimento.getTime(),'dd/MM/yyyy')}" class="h4"></p>
 		</div>
 	</div>
 </div>
