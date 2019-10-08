@@ -5,6 +5,7 @@ import br.com.fiap.soundgate.entity.*;
 import br.com.fiap.soundgate.excecao.CadastroException;
 import br.com.fiap.soundgate.excecao.EsgotadoException;
 import br.com.fiap.soundgate.excecao.SaldoInsuficienteException;
+import br.com.fiap.soundgate.webservice.facts.ExtornoFacts;
 import br.com.fiap.soundgate.webservice.facts.IngressoFacts;
 import br.com.fiap.soundgate.webservice.facts.UsuarioFacts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,5 +101,22 @@ public class SoundGateWBUsuario {
         historicoRepository.save(historico);
         ingressoRepository.save(ingresso);
 
+    }
+    @PostMapping("extornarIngresso")
+    @Transactional
+    public void extornarIngresso(@RequestBody ExtornoFacts extornoFacts){
+       Usuario usuario = repository.findByLoginAndSenha(extornoFacts.getUsuarioLogin(), extornoFacts.getUsuarioSenha());
+       Evento evento = eventoRepository.findById(extornoFacts.getEventoCd()).get();
+       Ingresso ingresso = ingressoRepository.findByCdAndEventoAndUsuario(extornoFacts.getIngressoCd(),evento,usuario);
+
+       usuario.setSaldo(usuario.getSaldo()+evento.getPreco());
+       Historico historico = new Historico();
+       historico.setUsuario(usuario);
+       historico.setValor(evento.getPreco());
+       historico.setData(new GregorianCalendar());
+       historico.setDescricao("Extorno do ingresso para o evento "+evento.getNome());
+       historicoRepository.save(historico);
+       repository.save(usuario);
+       ingressoRepository.delete(ingresso);
     }
 }
