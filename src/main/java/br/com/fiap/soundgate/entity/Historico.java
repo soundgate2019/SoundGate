@@ -56,6 +56,14 @@ public class Historico {
         this.valor = valor;
     }
 
+    public Historico(Usuario usuario, Calendar data, String descricao, double valor) {
+        super();
+        this.usuario = usuario;
+        this.data = data;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
     public Historico(int cd, Usuario usuario, Calendar data, String descricao) {
         super();
         this.cd = cd;
