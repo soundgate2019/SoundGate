@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{_templateDeslogado}">
+<head>
+	<title>Como usar</title>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+</head>
+<body>
+<div layout:fragment="menu" class="texto container" id="container">
+	<iframe th:src="@{https://www.youtube.com/watch?v=ZaGRvQ6ov-w}"
+			class="video" width="300" height="200"></iframe>
+	<p>O SoundGate utiliza uma tecnologia ultrass&ocirc;nica para se
+		comunicar com o dispositivo de passagem, quando o usu&aacute;rio
+		se aproxima da catraca, o dispositivo m&oacute;vel dele emite um
+		som que a catraca recebe, e logo ap&oacute;s ela checa as inform&ccedil;&otilde;es
+		da pessoa.</p>
+	<p>Tendo os dados checados, o aplicativo far&aacute; um d&eacute;bito da conta da pessoa
+		e a mesma ser&aacute; liberada e poder&aacute; passar pela catraca.</p>
+</div>
+</body>
+<script type="text/javascript" src="../bootstrap.min.js" ></script>
+</html>

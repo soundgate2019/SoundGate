@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{_templateDeslogado}">
+<head>
+	<title>Onde usar</title>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+</head>
+<body>
+<div layout:fragment="menu" >
+	<div class="container parceiros" id="container">
+		<div class="row linha" id="tabela">
+			<div class="col" id="col_nome">
+				<h2>Cinemark</h2>
+				<p>No cinemark, estar&atilde;o disponiveis catracas que podem ser
+					usadas caso voc&ecirc; tenha um ingresso no seu celular comprada pela
+					nossa plataforma.</p>
+			</div>
+			<div class="col rounded-bottom" id="col_img">
+				<img src="../../static/image/cinema.jpg" th:src="@{/image/cinema.jpg}" id="logo"
+					 width="350" height="200" />
+			</div>
+		</div>
+	</div>
+	<div class="container parceiros" id="container">
+		<div class="row linha" id="tabela">
+			<div class="col" id="col_nome">
+				<h2>Teatro Iguatemi</h2>
+				<p>Temos tamb&eacute;m parceria com o teatro Iguatemi, onde
+					disponibilizamos seus ingressos para compra.</p>
+			</div>
+			<div class="col rounded-bottom" id="col_img">
+				<img src="../../static/image/teatro.jpg" th:src="@{/image/teatro.jpg}" width="350"
+					 height="200" />
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+

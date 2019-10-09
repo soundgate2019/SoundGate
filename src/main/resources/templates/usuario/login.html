@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{_templateDeslogado}">
 
 <head>
 	<title>Login</title>
@@ -9,7 +10,7 @@
 	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 <body>
-<div class="container">
+<div layout:fragment="menu" class="container">
 	<div class="row">
 		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 			<div class="card card-signin my-5">
@@ -31,7 +32,7 @@
 							<input type="checkbox" class="custom-control-input"
 								   id="customCheck1"/>
 							<label class="custom-control-label" for="customCheck1">Lembrar senha</label>
-							<span class="margin"><a href="perfil.html"> Esqueci
+							<span class="margin"><a href="#"> Esqueci
 											a senha </a></span>
 						</div>
 						<button class="btn btn-lg btn-primary btn-block botoes text-uppercase"
