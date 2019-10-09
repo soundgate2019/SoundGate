@@ -53,12 +53,11 @@ public class Evento {
     @JsonFormat(pattern = "HH:mm:sss")
     @Column(name="hr_li_evento",nullable=false)
     private Date horarioLimite;
-    @Lob
     @Column(name="ft_evento",nullable = true)
-    private byte[] fotoEvento;
+    private String fotoEvento;
 
     public Evento(int cd, String nome, Calendar primeiroDia, Calendar ultimoDia, Empresa empresa, Endereco endereco,
-                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite, byte[] fotoEvento) {
+                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite, String fotoEvento) {
         super();
         this.cd = cd;
         this.nome = nome;
@@ -170,11 +169,11 @@ public class Evento {
         this.horarioLimite = horarioLimite;
     }
 
-    public byte[] getFotoEvento() {
+    public String getFotoEvento() {
         return fotoEvento;
     }
 
-    public void setFotoEvento(byte[] fotoEvento) {
+    public void setFotoEvento(String fotoEvento) {
         this.fotoEvento = fotoEvento;
     }
 }
