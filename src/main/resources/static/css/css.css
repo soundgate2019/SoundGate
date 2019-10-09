@@ -125,6 +125,33 @@ body {
 	border-radius: 20px;
 }
 
+::-webkit-scrollbar {
+	width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: transparent;
+	border-radius: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: transparent;
+}
+
+.corpoTabela{
+
+	overflow-y: scroll;
+	position: relative;
+	height: 350px;
+}
+
 .bg-dark{
 	background-color: #341f4a;
 }

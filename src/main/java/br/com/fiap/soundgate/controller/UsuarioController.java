@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class UsuarioController {
@@ -82,7 +83,8 @@ public class UsuarioController {
         Usuario usuario = usuarioRepository.findByCd(codigo);
         double saldoAtual = usuario.getSaldo();
         usuario.setSaldo(saldoAtual+valor);
-        Historico h = new Historico(usuario, Calendar.getInstance(), "Compra de saldo", valor);
+        Historico h = new Historico(usuario, Calendar.getInstance(new Locale("pt", "BR")),
+                "Compra de saldo", valor);
         saldoSe.setAttribute("usuario", usuario);
 
         historicoRepository.save(h);
@@ -99,7 +101,7 @@ public class UsuarioController {
     public String historico(HttpSession session){
         Usuario u = (Usuario) session.getAttribute("usuario");
         List<Historico> historicos = usuarioRepository.findById(u.getCd()).get().getHistoricos();
-        historicoRepository.deleteAll();
+
         session.setAttribute("historico", historicos);
         return "usuario/historico";
     }

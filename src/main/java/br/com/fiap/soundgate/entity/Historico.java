@@ -32,7 +32,7 @@ public class Historico {
     private int cd;
     @Id
     @JsonIgnoreProperties("historicos")
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

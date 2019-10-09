@@ -28,25 +28,31 @@
             </div>
         </div>
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="col_pal h1 text-dark text-center" colspan="3"> Hist&oacute;rico</th>
-        </tr>
-        <tr class="bg-dark text-light">
-            <th scope="col">Qtd. Saldo</th>
-            <th scope="col">Data</th>
-            <th scope="col">Descri&ccedil;&atilde;o</th>
-        </tr>
-        </thead>
-        <tbody class="bg-dark text-light">
-        <tr th:each="hist:${session.historico}">
-            <td th:text="${hist.valor}"></td>
-            <td th:text="${#dates.format(hist.data, 'dd-MM-yyyy HH:mm:ss')}"></td>
-            <td th:text="${hist.descricao}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <table style="margin-bottom: 0" class="table historico">
+            <thead>
+                <tr>
+                    <th class="col_pal h1 text-dark text-center" style="border: none" colspan="3"> Hist&oacute;rico</th>
+                </tr>
+                <tr class="bg-dark text-light">
+                    <th scope="col">Qtd. Saldo</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Descri&ccedil;&atilde;o</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="corpoTabela">
+        <table style="margin-top: 0" class="table">
+            <tbody class="bg-dark text-light" >
+                <tr th:each="hist:${session.historico}">
+                    <td th:text="${'R$'+#numbers.formatDecimal(hist.valor, 0, 'COMMA', 2, 'POINT')}"></td>
+                    <td th:text="${#dates.format(hist.data, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${hist.descricao}"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
