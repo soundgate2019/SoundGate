@@ -1,5 +1,6 @@
 package br.com.fiap.soundgate.controller;
 
+import br.com.fiap.soundgate.DAO.HistoricoRepository;
 import br.com.fiap.soundgate.DAO.UsuarioRepository;
 import br.com.fiap.soundgate.entity.Endereco;
 import br.com.fiap.soundgate.entity.Historico;
@@ -19,6 +20,8 @@ import java.util.Calendar;
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private HistoricoRepository historicoRepository;
 
     @GetMapping("/usuario/cadastro")
     public String cadastrarUsuario(){
@@ -76,7 +79,8 @@ public class UsuarioController {
         double saldoAtual = usuario.getSaldo();
         usuario.setSaldo(saldoAtual+valor);
         Historico h = new Historico(usuario, Calendar.getInstance(), "Adcionamento de créditos", valor);
-        usuario.addHistorico(h);
+
+        historicoRepository.save(h);
         usuarioRepository.save(usuario);
         return "redirect:/usuario/login";
     }
