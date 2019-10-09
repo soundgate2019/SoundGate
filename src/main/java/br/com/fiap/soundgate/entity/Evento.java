@@ -46,11 +46,13 @@ public class Evento {
     @OneToMany(mappedBy="evento",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Ingresso> ingressos = new ArrayList<Ingresso>();
     @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm:sss")
+    @JsonFormat(pattern = "HH:mm:ss")
+    @DateTimeFormat(pattern = "HH:mm:ss")
     @Column(name="hr_ini_evento",nullable=false)
     private Date horarioInicial;
     @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm:sss")
+    @JsonFormat(pattern = "HH:mm:ss")
+    @DateTimeFormat(pattern = "HH:mm:ss")
     @Column(name="hr_li_evento",nullable=false)
     private Date horarioLimite;
     @Column(name="ft_evento",nullable = true)

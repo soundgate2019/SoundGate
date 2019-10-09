@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EventoController {
     @Autowired
     private EventoRepository eventoRepository;
+    @Autowired
     private EmpresaRepository empresaRepository;
 
     @GetMapping("/evento/cadastro")
