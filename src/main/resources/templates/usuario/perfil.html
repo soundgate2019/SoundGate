@@ -8,7 +8,7 @@
 	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 <body>
-<div layout:fragment="menu" th:object="${usuario}" class="container" id="container">
+<div layout:fragment="menu" th:object="${session.usuario}" class="container" id="container">
 	<div class="imagem">
 		<img src="../../static/image/perfil.jpg" th:src="@{/image/perfil.jpg}" width="200px"
 			 height="200px" alt="foto de perfil" id="fotoPerfil"/>

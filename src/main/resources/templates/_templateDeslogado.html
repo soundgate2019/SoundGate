@@ -14,7 +14,7 @@
 			<button class="navbar-toggler" type="button">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarText" th:switch="${usuario}">
+			<div class="collapse navbar-collapse" id="navbarText" th:switch="${session.usuario}">
 				<ul style="float: left" class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
@@ -40,7 +40,7 @@
 							<a class="nav-link" href="/usuario/perfil">Perfil</a>
 						</li>
 						<span class="nav-link nav-item navbar-text conta"> <a
-								href="/usuario/login"> Sair </a>
+								href="/usuario/deslogar"> Sair </a>
 						</span>
 					</ul>
 				</div>
