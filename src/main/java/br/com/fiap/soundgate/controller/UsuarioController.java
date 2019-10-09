@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 
 @Controller
@@ -50,11 +51,11 @@ public class UsuarioController {
         return "usuario/login";
     }
     @PostMapping("/usuario/login")
-    public String loginUsuario(Model model, String login, String senha, RedirectAttributes redirectAttributes){
+    public String loginUsuario(Model model, HttpSession http, String login, String senha, RedirectAttributes redirectAttributes){
         Usuario u = usuarioRepository.findByLoginAndSenha(login, senha);
         if (u!=null){
             model.addAttribute("usuario", u);
-            return "usuario/compra";
+            return "usuario/perfil";
         } else {
             redirectAttributes.addFlashAttribute("msg", "Login ou senha incorretos");
             return "redirect:/usuario/login";
