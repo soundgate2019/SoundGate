@@ -8,6 +8,7 @@ import br.com.fiap.soundgate.entity.Evento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EventoController {
@@ -15,13 +16,19 @@ public class EventoController {
     private EventoRepository eventoRepository;
     private EmpresaRepository empresaRepository;
 
-    @GetMapping("evento/cadastro")
+    @GetMapping("/evento/cadastro")
+    public String cadastrarEvento(){
+        return "evento/cadastroEvento";
+    }
+    @PostMapping("/evento/cadastro")
     public String cadastrarEvento(Evento evento, String logradouro,String cep,String descricao){
         Endereco e = new Endereco();
         e.setCep(cep);
         e.setDescricao(descricao);
         e.setLogradouro(logradouro);
-        Empresa empresa = empresaRepository.findByNome("sehloiro");
-        return null;
+        evento.setEndereco(e);
+        evento.setEmpresa(empresaRepository.findByNome("sehloiro"));
+        eventoRepository.save(evento);
+        return "evento/cadastroEvento";
     }
 }

@@ -29,7 +29,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/usuario/cadastro")
-        public String cadastrarUsuario(RedirectAttributes redirectAttributes, Model model, Usuario usuario,String logradouro,String cep,String descricao) throws CadastroException {
+        public String cadastrarUsuario(RedirectAttributes redirectAttributes, Model model,
+                                       Usuario usuario,String logradouro,String cep,String descricao) throws CadastroException {
             if(usuarioRepository.findByLogin(usuario.getLogin()) != null) {
                 redirectAttributes.addFlashAttribute("msg", "O email já foi cadastrado");
                 return "redirect:/usuario/cadastro";
@@ -78,7 +79,7 @@ public class UsuarioController {
         Usuario usuario = usuarioRepository.findByCd(codigo);
         double saldoAtual = usuario.getSaldo();
         usuario.setSaldo(saldoAtual+valor);
-        Historico h = new Historico(usuario, Calendar.getInstance(), "Adcionamento de créditos", valor);
+        Historico h = new Historico(usuario, Calendar.getInstance(), "Compra de créditos", valor);
 
         historicoRepository.save(h);
         usuarioRepository.save(usuario);
