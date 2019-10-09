@@ -31,4 +31,9 @@ public class SoundGateWBEvento {
             return evento.getLugaresPorDia();
         return evento.getLugaresPorDia()-ingressoRepository.contarIngressos(evento.getCd(),data);
     }
+
+    @DeleteMapping("deletar")
+    public void deletar(@RequestBody Evento evento){
+        repository.delete(evento);
+    }
 }
