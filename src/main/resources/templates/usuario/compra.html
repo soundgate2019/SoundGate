@@ -34,22 +34,23 @@
 		</div>
 		<div class="col_saldo">
 			<p class="h3" STYLE="padding-top: 20px"
-			   th:text="'R$'+${#numbers.formatDecimal(session.usuario.saldo, 0, 'COMMA', 2, 'POINT')}"></p>
+			   th:text="'R$'+${#numbers.formatDecimal(session.usuario.saldo, 1, 'COMMA', 2, 'POINT')}"></p>
 		</div>
 		<div style="margin-top: 20px" class="card mb-4 box-shadow">
 			<div class="card-header">
 				<h4 class="my-0 font-weight-normal">Adicionar Cr&eacute;ditos</h4>
 			</div>
 			<div class="card-body">
-				<form class="form-group" action="/usuario/adicionar" method="post">
+				<form class="form-group adicionar" action="/usuario/adicionar" method="post">
 					<div>
 						<input type="hidden" th:name="codigo" th:value="${session.usuario.cd}">
 					</div>
 					<label>Valor da compra:
 					</label>
-					<input style="margin-bottom: 15px" class="form-control" type="text" th:name="valor"/>
+					<input required style="margin-bottom: 15px" class="form-control" type="number" step="any" th:name="valor"/>
 				<button type="submit" class="btn btn-lg btn-primary btn-block botoes text-uppercase">Adicionar</button>
 				</form>
+				<div class="alert-warning alert alerta" th:if="${msg!=null}" th:text="${msg}"></div>
 			</div>
 		</div>
 	</div>

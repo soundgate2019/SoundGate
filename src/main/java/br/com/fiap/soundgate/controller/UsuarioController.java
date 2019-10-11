@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -36,8 +37,41 @@ public class UsuarioController {
                                        Usuario usuario,String logradouro,String cep,String descricao) throws CadastroException {
             if(usuarioRepository.findByLogin(usuario.getLogin()) != null) {
                 redirectAttributes.addFlashAttribute("msg", "O email já foi cadastrado");
-                return "redirect:/usuario/cadastro";
+                return "usuario/cadastro";
             }
+            /*List<String> erros = new ArrayList<String>();
+            System.out.println(usuario.getLogin());
+            if(usuario.getLogin()=="")
+                erros.add("email");
+            if(usuario.getCpf()<0)
+                erros.add("cpf");
+            if(usuario.getNome()=="")
+                erros.add("nome");
+            if(usuario.getRg()=="")
+                erros.add("rg");
+            if(usuario.getSenha()=="")
+                erros.add("senha");
+            if(usuario.getTelefone()<0)
+                erros.add("numero de celular");
+            if(logradouro==null)
+                erros.add("logradouro");
+            if(descricao==null)
+                erros.add("descrição");
+            if(cep==null)
+                erros.add("cep");
+            if(erros.size()>0){
+                String mensagem = "";
+                for(int i=0; i<erros.size(); i++){
+                    if(i==erros.size()){
+                        mensagem+=erros.get(i);
+                    }else {
+                        mensagem+=erros.get(i) + ", ";
+                    }
+                }
+                mensagem="Os campos: "+mensagem+". São obrigatórios";
+                redirectAttributes.addFlashAttribute("msg", mensagem);
+                return "usuario/cadastro";
+            }*/
             session.setAttribute("usuario", usuario);
             Endereco endereco = new Endereco();
             endereco.setCep(cep);
@@ -57,7 +91,7 @@ public class UsuarioController {
         Usuario u = usuarioRepository.findByLoginAndSenha(login, senha);
         if (u!=null){
             session.setAttribute("usuario", u);
-            return "usuario/compra";
+            return "usuario/perfil";
         } else {
             redirectAttributes.addFlashAttribute("msg", "Login ou senha incorretos");
             return "redirect:/usuario/login";
@@ -78,8 +112,12 @@ public class UsuarioController {
     public String adicionar(){return "usuario/login";}
 
     @PostMapping("/usuario/adicionar")
-    public String adicionarCred(@RequestParam(value = "valor") double valor, HttpSession saldoSe,
+    public String adicionarCred(@RequestParam(value = "valor") double valor, Model model, HttpSession saldoSe,
                                 @RequestParam(value = "codigo") int codigo){
+        if (valor <= 0){
+            model.addAttribute("msg", "O valor do saldo deve ser maior que 0");
+            return "usuario/compra";
+        }
         Usuario usuario = usuarioRepository.findByCd(codigo);
         double saldoAtual = usuario.getSaldo();
         usuario.setSaldo(saldoAtual+valor);

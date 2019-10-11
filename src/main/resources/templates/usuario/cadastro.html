@@ -21,58 +21,48 @@
 					<form class="form-signin" action="/usuario/cadastro" method="post">
 						<div class="form-label-group">
 							<label>Nome completo</label>
-							<input type="text" name="nome" maxlength="30" id="nome"
+							<input type="text" name="nome" required maxlength="70" id="nome"
 								   class="form-control" />
 						</div>
 						<div class="form-label-group">
 							<label>Login(Email)</label>
-							<input type="email" id="inputEmail" name="login" maxlength="100" class="form-control" />
+							<input type="email" id="inputEmail" required name="login" maxlength="30" class="form-control" />
 						</div>
-
-						<div class="form-label-group">
-							<label>Confirmar o email</label>
-							<input type="email" id="inputEmail" maxlength="100"  class="form-control" />
-						</div>
-
 						<div class="form-label-group">
 							<label>Senha</label>
-							<input type="password" name="senha" maxlength="200" id="inputPassword"
-								   class="form-control" />
-						</div>
-						<div class="form-label-group">
-							<label>Confirmar a senha</label>
-							<input type="password" maxlength="200" id="inputPassword"
+							<input type="password" name="senha" required maxlength="20" id="inputSenha"
 								   class="form-control" />
 						</div>
 						<div class="form-label-group">
 							<label>CPF</label>
-							<input type="text" id="cpf" name="cpf" maxlength="15" class="form-control" />
+							<input type="text" id="cpf" required name="cpf" minlength="11" maxlength="11" class="form-control" />
 						</div>
 						<div class="form-label-group">
 							<label>RG</label>
-							<input type="text" id="rg" name="rg" maxlength="15" class="form-control" />
+							<input type="text" id="rg" required name="rg" minlength="9" maxlength="9" class="form-control" />
 						</div>
 						<div class="form-label-group">
 							<label>Data de nascimento</label>
-							<input type="date" name="nascimento" class="form-control" maxlength="11" id="niver" />
+							<input type="date" name="nascimento" required class="form-control" maxlength="11" id="niver" />
 						</div>
 						<div class="form-label-group">
 							<label>N&uacute;mero de celular</label>
-							<input type="text" class="form-control" name="telefone" maxlength="11" id="celular" />
+							<input type="text" class="form-control" required name="telefone" minlength="9"
+								   maxlength="9" id="celular" />
 						</div>
 						<div class="form-label-group">
 							<label>Cep</label>
-								<input class="form-control" type="number" name="cep">
+								<input class="form-control" required type="text" minlength="8" maxlength="8" name="cep">
 
 						</div>
 						<div class="form-label-group">
 							<label>Logradouro</label>
-								<input class="form-control" type="text"name="logradouro">
+								<input class="form-control" required maxlength="128" type="text"name="logradouro">
 
 						</div>
 						<div class="form-label-group divEnd">
 							<label>Descri&ccedil;&atilde;o</label>
-								<input class="form-control" type="text" name="descricao">
+								<input class="form-control" required maxlength="256" type="text" name="descricao">
 
 						</div>
 						<button

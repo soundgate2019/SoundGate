@@ -23,7 +23,8 @@
 	<div class="campo">
 		<p class="h2">RG</p>
 		<div class="form-control">
-			<p th:text="*{rg}" class="h4"></p>
+			<p th:text="*{rg.substring(0,2)+'.'+rg.substring(2, 5)+'.'+rg.substring(5, 8)+'-'+rg.substring(8)}"
+			   class="h4"></p>
 		</div>
 	</div>
 	<div class="campo email">
@@ -34,8 +35,9 @@
 	</div>
 	<div class="campo grande">
 		<p class="h2">CPF</p>
-		<div class="form-control">
-			<p th:text="*{cpf}" class="h4"></p>
+		<div class="form-control" th:with="cpfformatado=*{#strings.toString(cpf)}">
+			<p th:text="${cpfformatado.substring(0,3)+'.'+cpfformatado.substring(3,6)+'.'+cpfformatado.substring(6,9)+'-'+
+			cpfformatado.substring(9, 11)}" class="h4"></p>
 		</div>
 	</div>
 	<div class="campo grande">
