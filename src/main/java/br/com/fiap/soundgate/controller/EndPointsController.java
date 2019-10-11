@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ConsertoController {
+public class EndPointsController {
     @GetMapping("/usuarios")
     public String usuarios(){
         return "usuario/home";
