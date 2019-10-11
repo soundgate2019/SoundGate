@@ -143,4 +143,11 @@ public class UsuarioController {
         session.setAttribute("historico", historicos);
         return "usuario/historico";
     }
+    @GetMapping("/usuario/atualizar")
+    public String redir(HttpSession session){
+        Usuario u = (Usuario) session.getAttribute("usuario");
+        Usuario uSes = usuarioRepository.findByCd(u.getCd());
+        session.setAttribute("usuario", uSes);
+        return "usuario/compra";
+    }
 }
