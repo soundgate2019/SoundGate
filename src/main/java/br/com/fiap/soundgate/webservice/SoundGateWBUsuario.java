@@ -60,6 +60,15 @@ public class SoundGateWBUsuario {
     public List<Historico> historicos(@RequestBody Usuario usuario){
         return repository.findById(usuario.getCd()).get().getHistoricos();
     }
+    @PostMapping("onibus")
+    public boolean passarBus(@RequestBody Usuario usuario){
+        if(usuario.getSaldo()>=4.30){
+            usuario.setSaldo(usuario.getSaldo()-4.30);
+            return true;
+        }else{
+            return false;
+        }
+    }
     @PostMapping("cadastrar")
     public  void cadastrarUsuario(@RequestBody Usuario usuario)throws CadastroException{
         if(repository.findByLogin(usuario.getLogin()) != null)
