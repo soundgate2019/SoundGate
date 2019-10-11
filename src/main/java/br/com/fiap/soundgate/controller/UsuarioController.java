@@ -150,4 +150,12 @@ public class UsuarioController {
         session.setAttribute("usuario", uSes);
         return "usuario/compra";
     }
+    @GetMapping("/usuarios")
+    public String usuarios(){
+        return "usuario/home";
+    }
+    @GetMapping("/empresas")
+    public String empresas(){
+        return "usuario/home";
+    }
 }

@@ -71,7 +71,7 @@ public class SoundGateWBUsuario {
             h.setUsuario(usuario);
             h.setData(Calendar.getInstance());
             h.setDescricao("Passagem onibus");
-            h.setValor(4.30);
+            h.setValor(-4.30);
             historicoRepository.save(h);
             repository.save(usuario);
             return true;
