@@ -64,6 +64,7 @@ public class SoundGateWBUsuario {
     public boolean passarBus(@RequestBody Usuario usuario){
         if(usuario.getSaldo()>=4.30){
             usuario.setSaldo(usuario.getSaldo()-4.30);
+            repository.save(usuario);
             return true;
         }else{
             return false;
