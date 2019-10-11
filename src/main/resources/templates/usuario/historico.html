@@ -1,0 +1,58 @@
+<!DOCTYPE >
+
+<html html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_templateDeslogado}">>
+
+<head>
+    <title>Historico</title>
+    <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+</head>
+<body>
+<div layout:fragment="menu" >
+    <div class="compra">
+        <div class="container-fluid">
+            <div class="row h-30">
+                <div class="col-12 col-md-2 bg-dark menu">
+                    <div
+                            class="navbar navbar-expand navbar-dark compra bg-dark flex-md-column flex-row menu">
+                        <div class="collapse navbar-collapse menu ">
+                            <ul class="flex-md-column flex-row navbar-nav justify-content-between">
+                                <li class="nav-item"><a class="nav-link" href="/usuario/compra">Saldo</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/usuario/historico">Hist&oacute;rico</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table style="margin-bottom: 0" class="table historico">
+            <thead>
+                <tr>
+                    <th class="col_pal h1 text-dark text-center" style="border: none" colspan="3"> Hist&oacute;rico</th>
+                </tr>
+                <tr class="bg-dark text-light">
+                    <th scope="col">Qtd. Saldo</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Descri&ccedil;&atilde;o</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="corpoTabela">
+        <table style="margin-top: 0" class="table">
+            <tbody class="bg-dark text-light" >
+                <tr th:each="hist:${session.historico}">
+                    <td th:text="${'R$'+#numbers.formatDecimal(hist.valor, 0, 'COMMA', 2, 'POINT')}"></td>
+                    <td th:text="${#dates.format(hist.data, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${hist.descricao}"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

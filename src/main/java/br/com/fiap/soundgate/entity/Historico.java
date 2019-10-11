@@ -32,7 +32,7 @@ public class Historico {
     private int cd;
     @Id
     @JsonIgnoreProperties("historicos")
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -50,6 +50,14 @@ public class Historico {
     public Historico(int cd, Usuario usuario, Calendar data, String descricao, double valor) {
         super();
         this.cd = cd;
+        this.usuario = usuario;
+        this.data = data;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Historico(Usuario usuario, Calendar data, String descricao, double valor) {
+        super();
         this.usuario = usuario;
         this.data = data;
         this.descricao = descricao;

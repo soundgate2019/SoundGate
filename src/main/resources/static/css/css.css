@@ -85,6 +85,7 @@ body {
 	margin-top: 30px;
 	margin-left: 5px;
 	margin-bottom: 5px;
+	text-decoration-color: #341f4a;
 	align: right;
 	float: left;
 	padding: 1px;
@@ -101,8 +102,8 @@ body {
 }
 
 .compra {
-	width: 100%;
-	height: 50%;
+	width: 186px;
+	height: 76px;
 }
 
 .compra a {
@@ -119,10 +120,45 @@ body {
 	text-align: center;
 	height: 140px;
 	width: 50%;
-	margin-top:-3%;
 	margin-left: 25%;
 	border: 1px solid white;
 	border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: transparent;
+	border-radius: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: transparent;
+}
+
+.corpoTabela{
+
+	overflow-y: scroll;
+	position: relative;
+	height: 350px;
+}
+
+.bg-dark{
+	background-color: #341f4a;
+}
+
+.table{
+	margin-left: 25%;
+	width:50%;
 }
 
 .col_pal {
@@ -151,8 +187,11 @@ body {
 	height:100%;
 }
 
+.texto p{
+	font-size: large;
+}
+
 .menu {
-	height:100%;
 	background-color: #341f4a;
 	border-color: #341f4a
 }

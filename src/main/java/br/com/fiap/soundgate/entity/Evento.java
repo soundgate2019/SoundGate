@@ -46,19 +46,20 @@ public class Evento {
     @OneToMany(mappedBy="evento",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Ingresso> ingressos = new ArrayList<Ingresso>();
     @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm:sss")
+    @JsonFormat(pattern = "HH:mm:ss")
+    @DateTimeFormat(pattern = "HH:mm:ss")
     @Column(name="hr_ini_evento",nullable=false)
     private Date horarioInicial;
     @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm:sss")
+    @JsonFormat(pattern = "HH:mm:ss")
+    @DateTimeFormat(pattern = "HH:mm:ss")
     @Column(name="hr_li_evento",nullable=false)
     private Date horarioLimite;
-    @Lob
     @Column(name="ft_evento",nullable = true)
-    private byte[] fotoEvento;
+    private String fotoEvento;
 
     public Evento(int cd, String nome, Calendar primeiroDia, Calendar ultimoDia, Empresa empresa, Endereco endereco,
-                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite, byte[] fotoEvento) {
+                  double preco, int lugaresPorDia, List<Ingresso> ingressos, Date horarioInicial, Date horarioLimite, String fotoEvento) {
         super();
         this.cd = cd;
         this.nome = nome;
@@ -170,11 +171,11 @@ public class Evento {
         this.horarioLimite = horarioLimite;
     }
 
-    public byte[] getFotoEvento() {
+    public String getFotoEvento() {
         return fotoEvento;
     }
 
-    public void setFotoEvento(byte[] fotoEvento) {
+    public void setFotoEvento(String fotoEvento) {
         this.fotoEvento = fotoEvento;
     }
 }

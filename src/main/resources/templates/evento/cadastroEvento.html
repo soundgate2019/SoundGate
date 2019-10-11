@@ -5,7 +5,7 @@
     <title>Cadastro do Evento</title>
 </head>
 <body>
-    <form>
+    <form action="/evento/cadastro" method="post">
         <div>
             <label>
                 Nome:
@@ -26,9 +26,49 @@
         </div>
         <div>
             <label>
-
+                Preco:
+                <input type="text" name="preco">
             </label>
         </div>
+        <div>
+            <label>
+                Lugares por dia:
+                <input type="number" name="lugaresPorDia">
+            </label>
+        </div>
+        <div>
+            <label>
+                Horario inicial:
+                <input type="text" name="horarioInicial">
+            </label>
+        </div>
+        <div>
+            <label>
+                Horario limite:
+                <input type="text" name="horarioLimite">
+            </label>
+        </div>
+        <div class="form-label-group">
+            <label>Cep</label>
+            <input class="form-control" type="number" name="cep">
+
+        </div>
+        <div class="form-label-group">
+            <label>Logradouro</label>
+            <input class="form-control" type="text"name="logradouro">
+
+        </div>
+        <div class="form-label-group divEnd">
+            <label>Descri&ccedil;&atilde;o</label>
+            <input class="form-control" type="text" name="descricao">
+
+        </div>
+        <div class="form-label-group divEnd">
+            <label>Descri&ccedil;&atilde;o</label>
+            <input class="form-control" type="text" name="fotoEvento">
+
+        </div>
+        <button type="submit">Cadastrar</button>
     </form>
 </body>
 </html>

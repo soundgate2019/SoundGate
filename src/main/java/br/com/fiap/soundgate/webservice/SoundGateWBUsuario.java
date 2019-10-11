@@ -80,7 +80,7 @@ public class SoundGateWBUsuario {
 
         //Conferindo se existem ingressos disponiveis para esse evento
         if(!ingressoRepository.findAllByEvento(evento).isEmpty())
-            //if(evento.getLugaresPorDia()-ingressoRepository.contarIngressos(evento.getCd(),ingresso.getData())<1)
+            if(evento.getLugaresPorDia()-ingressoRepository.contarIngressos(evento.getCd(),ingresso.getData())<1)
                 throw new EsgotadoException();
 
         //Coferindo e atualizando informações do usuario

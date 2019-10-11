@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{_templateDeslogado}">
 <head>
 	<title>Perfil</title>
 	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
 	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:object="${usuario}" class="container" id="container">
+<div layout:fragment="menu" th:object="${session.usuario}" class="container" id="container">
 	<div class="imagem">
 		<img src="../../static/image/perfil.jpg" th:src="@{/image/perfil.jpg}" width="200px"
 			 height="200px" alt="foto de perfil" id="fotoPerfil"/>

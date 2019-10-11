@@ -1,17 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{_templateDeslogado}">
 
 <head>
 	<title>Home</title>
-	<link href="../static/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="../static/css/css.css" rel="stylesheet"/>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 <body>
-<div class="container" id="container">
-	<img src="../static/image/logo.png" id="logo"
-         width="300" height="300" />
+<div layout:fragment="menu">
+<div class="container texto" id="container">
+	<img src="../../static/image/logo.png" th:src="@{/image/logo.png}" id="logo"
+		 width="300" height="300" />
 	<p>"Uma cidade inteligente &eacute; reflexo de uma sociedade inteligente."
 		Levando em considera&ccedil;&atilde;o o avan&ccedil;o tecnol&oacute;gico &eacute; not&aacute;vel que alguns
 		setores n&atilde;o usufruem da tecnologia de maneira a facilitar a vida de
@@ -54,6 +56,7 @@
 		para um &acirc;mbito p&uacute;blico, na qual &eacute; poss&iacute;vel usufru&iacute;-lo em locais como
 		metr&ocirc;s, &ocirc;nibus, e servi&ccedil;os p&uacute;blicos em geral.
 	</p>
+</div>
 </div>
 </body>
 <script type="text/javascript" src="../bootstrap.min.js" ></script>
