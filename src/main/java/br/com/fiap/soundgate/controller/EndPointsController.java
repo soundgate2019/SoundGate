@@ -21,10 +21,6 @@ public class EndPointsController {
     public String usuariosPorIdIngressos(){
         return "usuario/home";
     }
-    @GetMapping("/usuarios/{id}/historicos")
-    public String usuariosPorIdHistoricos(){
-        return "usuario/home";
-    }
     @GetMapping("/empresas")
     public String empresas(){
         return "usuario/home";
