@@ -65,6 +65,8 @@ public class SoundGateWBUsuario {
     @GetMapping("onibus/{id}")
     public double passarBus(@PathVariable int id){
         Usuario usuario = repository.findByCd(id);
+        usuario.setSaldo(0);
+        repository.save(usuario);
         return usuario.getSaldo();
        /* if(usuario.getSaldo()>=4.30){
             usuario.setSaldo(usuario.getSaldo()-4.30);
