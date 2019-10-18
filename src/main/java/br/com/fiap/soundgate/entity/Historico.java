@@ -36,7 +36,7 @@ public class Historico {
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     @Column(name="dt_transacao",nullable=false)
     private Calendar data;
     @Column(name="desc_transacao",length=80,nullable=false)
