@@ -35,7 +35,7 @@ public class Historico {
     @ManyToOne()
     @JoinColumn(name="cd_usuario")
     private Usuario usuario;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.DATE)
     @Column(name="dt_transacao",nullable=false)
     private Calendar data;
