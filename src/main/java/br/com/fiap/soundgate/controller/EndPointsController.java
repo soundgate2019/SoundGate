@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class EndPointsController {
-    @GetMapping("/usuarios")
+    /*@GetMapping("/usuarios")
     public String usuarios(){
         return "usuario/home";
     }
@@ -19,6 +19,10 @@ public class EndPointsController {
     }
     @GetMapping("/usuarios/{id}/ingressos")
     public String usuariosPorIdIngressos(){
+        return "usuario/home";
+    }
+    @GetMapping("/usuarios/{id}/historicos")
+    public String usuariosPorIdHistoricos(){
         return "usuario/home";
     }
     @GetMapping("/empresas")
@@ -39,5 +43,5 @@ public class EndPointsController {
     public String empresasPorIdEventos(){
         return "usuario/home";
     }
-
+*/
 }
