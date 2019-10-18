@@ -63,12 +63,9 @@ public class SoundGateWBUsuario {
         return repository.findById(usuario.getCd()).get().getHistoricos();
     }
     @GetMapping("onibus/{id}")
-    public double passarBus(@PathVariable int id){
+    public boolean passarBus(@PathVariable int id){
         Usuario usuario = repository.findByCd(id);
-        usuario.setSaldo(0);
-        repository.save(usuario);
-        return usuario.getSaldo();
-       /* if(usuario.getSaldo()>=4.30){
+        if(usuario.getSaldo()>=4.30){
             usuario.setSaldo(usuario.getSaldo()-4.30);
             Historico h = new Historico();
             h.setUsuario(usuario);
@@ -80,7 +77,7 @@ public class SoundGateWBUsuario {
             return true;
         }else{
             return false;
-        }*/
+        }
     }
     @PostMapping("cadastrar")
     public  void cadastrarUsuario(@RequestBody Usuario usuario)throws CadastroException{
